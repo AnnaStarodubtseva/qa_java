@@ -25,10 +25,4 @@ public class LionDoesHaveManeTest {
         Lion objLion = new Lion(gender, feline);
         assertEquals(result, objLion.doesHaveMane());
     }
-    @Test(expected = Exception.class)
-    public void testDoesHaveManeWithException() throws Exception {
-        Lion objLion = new Lion("Ребёнок", feline);
-        assertEquals(result, objLion.doesHaveMane());
-    }
-
 }

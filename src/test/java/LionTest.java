@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 public class LionTest {
     Feline feline = new Feline();
+
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
@@ -23,15 +24,23 @@ public class LionTest {
         Lion objLion = new Lion("Самец", feline);
         assertEquals(List.of("Животные", "Птицы", "Рыба"), objLion.getFood());
     }
-    @Test(expected = Exception.class)
-    public void getFoodTestWithException() throws Exception {
-        Lion objLion = Mockito.mock(Lion.class);
-        Mockito.when(objLion.getFood()).thenReturn(feline.getFood("Насекомое"));
-        assertEquals(List.of("Листики", "Цветочки"), objLion.getFood());
-    }
+
     @Test
     public void testGetKittens() throws Exception {
         Lion lion = new Lion("Самка", feline);
         assertEquals(1, lion.getKittens());
     }
+    @Test(expected = Exception.class)
+    public void getFoodTestWithException() throws Exception {
+        Lion objLion = Mockito.mock(Lion.class);
+        Mockito.when(objLion.getFood()).thenReturn(feline.getFood("Насекомое"));
+        objLion.getFood();
+    }
+
+    @Test(expected = Exception.class)
+    public void testDoesHaveManeWithException() throws Exception {
+        Lion objLion = new Lion("Ребёнок", feline);
+        objLion.doesHaveMane();
+    }
+
 }
